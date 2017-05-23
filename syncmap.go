@@ -66,6 +66,20 @@ func (m *SyncMap) Set(key string, value interface{}) {
 	shard.Unlock()
 }
 
+// Set Value with the given key, if the key not exist in map now
+func (m *SyncMap) SetIfNotExist(key string, value interface{}) bool{
+	shard := m.locate(key)
+	shard.Lock()
+	_, ok := shard.items[key]
+	if ok {
+		shard.Unlock()
+		return false
+	}
+	shard.items[key] = value
+	shard.Unlock()
+	return true
+}
+
 // Removes an item
 func (m *SyncMap) Delete(key string) {
 	shard := m.locate(key)
