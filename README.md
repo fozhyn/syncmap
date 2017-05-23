@@ -10,7 +10,7 @@ A thread safe map implementation for Golang
 Install with:
 
 ```bash
-go get github.com/DeanThompson/syncmap
+go get github.com/fozhyn/syncmap
 ```
 
 Example:
@@ -19,7 +19,7 @@ Example:
 import (
     "fmt"
 
-    "github.com/DeanThompson/syncmap"
+    "github.com/fozhyn/syncmap"
 )
 
 func main() {
